@@ -40,6 +40,7 @@ public class ImprovedUtils {
         ImprovedUtils.getEnvironments(env, envNames, oldSystem1.actions, oldSystem1.getProcesses());
         ImprovedUtils.getEnvironments(env, envNames, oldSystem2.actions, oldSystem2.getProcesses());
 
+        //env.add(new Environment());
         return env;
     }
 }

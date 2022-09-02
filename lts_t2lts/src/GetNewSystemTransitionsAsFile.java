@@ -3,6 +3,7 @@ import Systems.Transformer;
 import Systems.OldSystem;
 import TransformedSystemComponents.LTS_sProcess;
 import TransformedSystemComponents.LTS_sTransition;
+import strongBisimilarity.CheckBisimilarity;
 import utils.ImprovedUtils;
 import utils.MathSet;
 
@@ -10,13 +11,15 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.lang.System;
 
 import static java.lang.System.exit;
+import static java.lang.System.nanoTime;
 
 public class GetNewSystemTransitionsAsFile {
     HashMap<String, String> newSystem2mCRL2Format1 = new HashMap<>();
     HashMap<String, String> newSystem2mCRL2Format2 = new HashMap<>();
-    boolean toUseJar = false;
+    boolean toUseJar = true;
     String LTS_sFilePath;
 
     public GetNewSystemTransitionsAsFile(){}
@@ -47,7 +50,7 @@ public class GetNewSystemTransitionsAsFile {
                         "("
                         + (mCRL2Format? newSystem2mCRL2Format.get(p.getName()) : p.getName())
                         + ",\""
-                        + (assuming && t.getAction().getName().contains("E{")? "E{...}" : t.getAction().getName())
+                        + (assuming && t.getAction().getName().contains("E{")? "E{...}" : this.getSuitableEnvForGLABBEEK(t.getAction().getName()))
                         + "\","
                         + (mCRL2Format? newSystem2mCRL2Format.get(t.getSuccessor().getName()) : t.getSuccessor().getName())
                         + ")";
@@ -77,8 +80,21 @@ public class GetNewSystemTransitionsAsFile {
         bw.close();
     }
 
+    private String getSuitableEnvForGLABBEEK(String name){
+        if(name.contains("E")){
+            String newName = name.substring(2, name.length() - 1).replace("-", "_");
+            if(newName.isEmpty())
+                return "noeE";
+            else
+                return newName;
+        }
+        return name;
+    }
+
     //args[0]: file1, args[1]: file2, args[2]: improved, args[3]: all pairs, args[4]: assumption
     public static void main(String[] args){
+        long timeBegin = nanoTime();
+
         if(args.length == 5) {
             String system1 = args[0];
             String system2 = args[1];
@@ -111,12 +127,15 @@ public class GetNewSystemTransitionsAsFile {
             newProcesses2 = transformer2.getNewProcesses();
 
             if(allPairsSet){
+                CheckBisimilarity checkBisimilarity = new CheckBisimilarity(newProcesses1, newProcesses2);
+                List<String> pairs = checkBisimilarity.getBisimilarPairs();
+                pairs.forEach(System.out::println);
             }
             else {
 
 
                 GetNewSystemTransitionsAsFile newSystemAsFile = new GetNewSystemTransitionsAsFile();
-                newSystemAsFile.LTS_sFilePath = newSystemAsFile.toUseJar ? "out/lts_s_files/" : "../out/lts_s_files/";
+                newSystemAsFile.LTS_sFilePath = newSystemAsFile.toUseJar ? "out/lts_s_files/" : "../code_systems/lts_s_files/";
                 newSystemAsFile.mapProcessesToMCRL2Format(newProcesses1, newSystemAsFile.newSystem2mCRL2Format1);
                 newSystemAsFile.mapProcessesToMCRL2Format(newProcesses2, newSystemAsFile.newSystem2mCRL2Format2);
                 //1
@@ -140,5 +159,8 @@ public class GetNewSystemTransitionsAsFile {
             System.err.println("Please enter a mcrl2 file and its parameters first!");
             exit(1);
         }
+        long timeEnd = nanoTime();
+        long execTime = timeEnd - timeBegin;
+        System.out.println("Execution time: " + timeEnd + " - " + timeBegin + " = " + (execTime / 1000000) + " ms");
     }
 }
