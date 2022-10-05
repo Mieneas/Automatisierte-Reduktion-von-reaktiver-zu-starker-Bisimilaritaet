@@ -1,1 +1,1 @@
-# Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilarit-t
+# Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilaritaet
