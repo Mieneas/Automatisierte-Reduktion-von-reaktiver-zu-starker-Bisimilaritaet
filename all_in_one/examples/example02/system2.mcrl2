@@ -1,0 +1,19 @@
+act
+	a, b, c, time;
+
+proc
+	p1 = b.P + time.p2 + time.p3;
+	p2 = a.Q + c.p5;
+	p3 = c.p4;
+	p4 = b.R + a.S;
+	p5 = a.S;
+	P = delta;
+	Q = delta;
+	R = delta;
+	S = delta;
+
+
+init 
+	hide(
+		{c}, p1
+	);

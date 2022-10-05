@@ -1,0 +1,14 @@
+act
+	a, b, c, d, time;
+
+proc
+	_0 = a._1 + time._2;
+	_1 = b._3 + time._4;
+	_2 = d._4;
+	_3 = d._4;
+	_4 = c._5;
+	_5 = delta;
+init 
+	hide(
+		{d}, _0
+	);

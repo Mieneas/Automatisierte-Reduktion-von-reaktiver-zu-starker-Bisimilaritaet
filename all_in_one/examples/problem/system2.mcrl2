@@ -1,0 +1,11 @@
+act
+	a, b, time;
+
+proc
+	p = a.p1 + time.p2;
+	p1 = delta;
+	p2 = b.p3;
+	p3 = delta;
+
+
+init p;

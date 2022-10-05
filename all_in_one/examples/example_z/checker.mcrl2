@@ -1,0 +1,18 @@
+act
+	ln_a, ec_a, lc_a, en_a, ln_b, ec_b, lc_b, en_b, time, hidden;
+
+proc
+	checker = ln_a.checker + ec_a.checker + time.checker + lc_a.checker + en_a.checker + ln_b.checker + ec_b.checker + time.checker + lc_b.checker + en_b.checker + hidden.checker;
+
+init
+	hide(
+		{
+			hidden
+		},
+		allow(
+			{
+				en_a, en_b, ln_a, ln_b, ec_a, ec_b, lc_a, lc_b, time, hidden
+			},
+			checker
+		)
+	);

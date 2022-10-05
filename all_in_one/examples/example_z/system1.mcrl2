@@ -1,0 +1,53 @@
+act
+	ln_a, a_true, _a_true, b_turn, _b_turn, n_b_false, _n_b_false, n_b_true, _n_b_true, n_a_turn, _n_a_turn, ec_a, lc_a, a_false, _a_false, en_a, ln_b, b_true, _b_true, a_turn, _a_turn, n_a_false, _n_a_false, n_a_true, _n_a_true, n_b_turn, _n_b_turn, ec_b, lc_b, b_false, _b_false, en_b, time, aIsReady, bIsReady, isAReady, isBready, aIsNotReady, bIsNotReady, isANotReady, isBNotready, aTurn, bTurn, isAturn, isBturn;
+
+proc
+	A = ln_a._a_true._b_turn.(n_b_false.ec_a.time.lc_a._a_false.en_a.A + n_a_turn.ec_a.time.lc_a._a_false.en_a.A);
+
+	B = ln_b._b_true._a_turn.(n_a_false.ec_b.time.lc_b._b_false.en_b.B + n_b_turn.ec_b.time.lc_b._b_false.en_b.B);
+
+	ReadyA_true = a_true.ReadyA_true + a_false.ReadyA_false + _n_a_true.ReadyA_true;
+
+	ReadyB_true = b_true.ReadyB_true + b_false.ReadyB_false + _n_b_true.ReadyB_true;
+	
+	ReadyA_false = a_true.ReadyA_true + a_false.ReadyA_false + _n_a_false.ReadyA_false;
+	
+	ReadyB_false = b_true.ReadyB_true + b_false.ReadyB_false + _n_b_false.ReadyB_false;
+
+	TurnA = a_turn.TurnA + b_turn.TurnB + _n_a_turn.TurnA;
+
+	TurnB = b_turn.TurnB + a_turn.TurnA + _n_b_turn.TurnB;
+
+
+init
+	hide(
+		{
+			aIsReady, bIsReady, isAReady, isBready,
+			aIsNotReady, bIsNotReady, isANotReady, isBNotready,
+			aTurn, bTurn, isAturn, isBturn
+		},
+		allow(
+			{
+				en_a, en_b, ln_a, ln_b, ec_a, ec_b, lc_a, lc_b, time, aIsReady, bIsReady, isAReady, isBready, aIsNotReady,
+				bIsNotReady, isANotReady, isBNotready, aTurn, bTurn,
+				isAturn, isBturn
+			},
+			comm(
+				{
+					a_true|_a_true -> aIsReady,
+					b_true|_b_true -> bIsReady,
+					n_a_true|_n_a_true -> isAReady,
+					n_b_true|_n_b_true -> isBready,
+					a_false|_a_false -> aIsNotReady,
+					b_false|_b_false -> bIsNotReady,
+					n_a_false|_n_a_false -> isANotReady,
+					n_b_false|_n_b_false -> isBNotready,
+					a_turn|_a_turn -> aTurn,
+					b_turn|_b_turn -> bTurn,
+					n_a_turn|_n_a_turn -> isAturn,
+					n_b_turn|_n_b_turn -> isBturn
+				},
+				A || B || ReadyA_false || ReadyB_false || TurnA
+			)
+		)
+	);
