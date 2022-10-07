@@ -15,7 +15,7 @@ von m · (1 + 2|n|) auf m · (n + t + 1) vermindert. Die Effizienz kann deutlich
 bemerkbar sein, wenn die beiden Versionen auf große Systeme umgesetzt werden. Diese Verbesserung ermöglicht eine schnellere und effiziente Überprüfung
 von großen Systemen, mit denen die ursprüngliche Version nur mit sehr langer
 
-## Files in Repo
+## Repository-Dateien
 
 - `thesis/thesis.pdf` Ist die Bachelorarbeit
 - `thesisi/thesis.zip` Ist der Sourcecode meiner Bachelorarbeit
