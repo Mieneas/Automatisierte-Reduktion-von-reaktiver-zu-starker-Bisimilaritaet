@@ -1,6 +1,6 @@
 # Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilarität
 
-Das Repository enthält alle Dateien, die von meiner [Bachelor Arbeit](https://github.com/Mieneas/Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilaritaet/blob/main/thesis/thesis.pdf).
+Das Repository enthält alle Dateien, die von meiner [Bachelor Arbeit](https://github.com/Mieneas/Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilaritaet/blob/main/thesis/thesis.pdf) abhängen.
 Mehrere Informationen kann in meiner Arbeit an sich gefunden werden.
 
 Meine Arbeit ist basiert hauptsächlich auf die Arbeit von [Maximilian Pohlmann](https://maxpohlmann.github.io/Reducing-Reactive-to-Strong-Bisimilarity/thesis.pdf).
