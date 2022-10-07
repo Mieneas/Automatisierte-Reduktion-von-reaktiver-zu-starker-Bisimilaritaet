@@ -1,6 +1,6 @@
 # Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilarität
 
-Das Repository enthält alle Dateien, die von meiner [Bachelor Arbeit](https://github.com/Mieneas/Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilaritaet/blob/main/thesis/thesis.pdf) abhängen.
+Das Repository enthält alle Dateien, die von meiner [Bachelorarbeit](https://github.com/Mieneas/Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilaritaet/blob/main/thesis/thesis.pdf) abhängen.
 Mehrere Informationen kann in meiner Arbeit an sich gefunden werden.
 
 Meine Arbeit ist basiert hauptsächlich auf die Arbeit von [Maximilian Pohlmann](https://maxpohlmann.github.io/Reducing-Reactive-to-Strong-Bisimilarity/thesis.pdf).
@@ -17,8 +17,8 @@ von großen Systemen, mit denen die ursprüngliche Version nur mit sehr langer
 
 ## Files in Repo
 
-- `thesis/thesis.pdf` Ist die Bachelorarbeit.
-- `thesisi/thesis.zip` Ist der Sourcecode meiner Bachelorarbeit.
-- `lts_t2lts/src` Ist der Sourcecode meines Werkzeuges zur Überprüfung der reaktiven Bisimilarität.
+- `thesis/thesis.pdf` Ist die Bachelorarbeit
+- `thesisi/thesis.zip` Ist der Sourcecode meiner Bachelorarbeit
+- `lts_t2lts/src` Ist der Sourcecode meines Werkzeuges zur Überprüfung der reaktiven Bisimilarität
 - `code_systems/lts_t_files` Ist nur ein Hilfsordner gebraucht bei `lts_t2lts/src`.
-- `all_in_one` Dadurch kann mein Werkzeug leicht angewandt werden. (Siehe den Abschnitt "Verwendungsweise" meiner [Bachelor Arbeit](https://github.com/Mieneas/Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilaritaet/blob/main/thesis/thesis.pdf))
+- `all_in_one` Dadurch kann mein Werkzeug leicht angewandt werden. (Siehe den Abschnitt "Verwendungsweise" meiner [Bachelorarbeit](https://github.com/Mieneas/Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilaritaet/blob/main/thesis/thesis.pdf))
