@@ -11,7 +11,7 @@ Diese Arbeit stellt ein Werkzeug vor, das die reaktive Bisimilarität [[vG20]](h
 beschriftete Transitionssysteme mit Timeouts (LTSt) [[vG21a]](https://doi.org/10.23638/LMCS-17(2:11)2021) überprüft.
 Das Werkzeug ist anhand einer Reduktion von reaktiver zu starker Bisimilarität [[Poh21]](https://maxpohlmann.github.io/Reducing-Reactive-to-Strong-Bisimilarity/thesis.pdf) entwickelt. Das Werkzeug kann ein Paar oder alle Paare von
 Prozessen des eingegebenen LTSt auf reaktive Bisimilarität überprüfen. Außerdem implementiere ich in dieser Arbeit eine Verbesserungsmöglichkeit bezüglich der Komplexität des Algorithmus der Reduktion. Die Komplexität ist
-von m · (1 + 2|n|) auf m · (n + t + 1) vermindert. Die Effizienz kann deutlich
+von m · (1 + 2^(|n|)) auf m · (n + t + 1) vermindert. Die Effizienz kann deutlich
 bemerkbar sein, wenn die beiden Versionen auf große Systeme umgesetzt werden. Diese Verbesserung ermöglicht eine schnellere und effiziente Überprüfung
 von großen Systemen, mit denen die ursprüngliche Version nur mit sehr langer
 
