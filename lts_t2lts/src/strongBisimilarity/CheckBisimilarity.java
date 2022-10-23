@@ -38,64 +38,36 @@ public class CheckBisimilarity {
     }
 
     private boolean checkSimulation(boolean leftToRight, List<Pair> pairs, LTS_sProcess p, LTS_sProcess q){
-        boolean found = false;
 
-        for(LTS_sTransition t1 : p.getTransitions()){
-            for(LTS_sTransition t2 : q.getTransitions()){
-                if(t1.getAction().getName().equals(t2.getAction().getName())){
-                    found = this.areSuccessorsInR(leftToRight, pairs, t1.getSuccessor(), t2.getSuccessor());
-                    if(found) break;
-                }
-            }
-            if(!found) return false;
-            found = false;
-        }
-        return true;
-    }
-
-    private boolean oneStepBisimilar(List<Pair> pairs, Pair pair){
-        return this.checkSimulation(true, pairs, pair.getPre(), pair.getPost()) &&
-                this.checkSimulation(false, pairs, pair.getPost(), pair.getPre());
-    }
-
-    private List<Pair> strongBisimilar(List<Pair> paris){
-        List<Pair> xStepBisimilar = new LinkedList<>();
-
-        for(Pair pair : paris){
-            if(oneStepBisimilar(paris, pair))
-                xStepBisimilar.add(pair);
-        }
-        return xStepBisimilar;
+        return p.getTransitions().stream().allMatch(t1 ->
+                q.getTransitions().stream().anyMatch(t2 ->
+                        t1.getAction().getName().equals(t2.getAction().getName())
+                    &&
+                        this.areSuccessorsInR(leftToRight, pairs, t1.getSuccessor(), t2.getSuccessor())));
     }
 
     public List<String> getBisimilarPairs(){
         List<Pair> pairs = new LinkedList<>();
-        List<Pair> bisimilarPairs = new LinkedList<>();
 
         //Build R
-        for(LTS_sProcess p : this.processList1){
-            for(LTS_sProcess q : this.processList2){
-                pairs.add(new Pair(p, q));
-            }
-        }
+        this.processList1.forEach(p -> this.processList2.forEach(q -> pairs.add(new Pair(p, q))));
 
         //Checking
+        int currentSize = pairs.size();
         while (true){
-            bisimilarPairs.clear();
-            bisimilarPairs.addAll(this.strongBisimilar(pairs));
-            if(!this.areListsEqual(pairs, bisimilarPairs)){
-                pairs.clear();
-                pairs.addAll(bisimilarPairs);
-            }
-            else break;
+            pairs.removeIf(p ->
+                !this.checkSimulation(true, pairs, p.getPre(), p.getPost()) ||
+                !this.checkSimulation(false, pairs, p.getPost(), p.getPre())
+            );
+            if(currentSize == pairs.size()) break;
+            currentSize = pairs.size();
         }
-
         List<String> result = new LinkedList<>();
-        for(Pair p : bisimilarPairs){
+        pairs.forEach(p -> {
             if(!result.contains(p.getPairName()) && !p.getPairName().contains("}")){
                 result.add(p.getShowPair());
             }
-        }
+        });
         return result;
     }
 }
