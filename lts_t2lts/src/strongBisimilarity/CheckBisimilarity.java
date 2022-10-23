@@ -1,7 +1,6 @@
 package strongBisimilarity;
 
 import TransformedSystemComponents.LTS_sProcess;
-import TransformedSystemComponents.LTS_sTransition;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -14,17 +13,6 @@ public class CheckBisimilarity {
     public CheckBisimilarity(List<LTS_sProcess> list1, List<LTS_sProcess> list2){
         this.processList1 = list1;
         this.processList2 = list2;
-    }
-
-    private boolean areListsEqual(List<Pair> list1, List<Pair> list2){
-        if(list1.size() == list2.size()){
-            for(Pair p : list1){
-                if(!list2.contains(p))
-                    return false;
-            }
-            return true;
-        }
-        return false;
     }
 
     private boolean areSuccessorsInR(boolean leftToRight, List<Pair> pairs, LTS_sProcess successorOfP, LTS_sProcess successorOfQ){

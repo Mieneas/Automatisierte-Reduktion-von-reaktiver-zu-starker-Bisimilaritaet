@@ -1,7 +1,6 @@
 package strongBisimilarity;
 
 import TransformedSystemComponents.LTS_sProcess;
-import TransformedSystemComponents.LTS_sTransition;
 
 public class Pair {
     private final LTS_sProcess pre;
