@@ -24,4 +24,4 @@ Version nur mit sehr langer Ausführungszeit auskommt.
 - `thesis/research_colloquium_presentation/Automatisierte Reduktion von reaktiver zu starker Bisimilarität.pptx` Ist der Sourcecode meiner Forschungskolloquiumspräsentation.
 - `lts_t2lts/src` Ist der Sourcecode meines Werkzeuges zur Überprüfung der reaktiven Bisimilarität.
 - `code_systems/lts_t_files` Ist nur ein Hilfsordner gebraucht bei `lts_t2lts/src`.
-- `all_in_one` Dadurch kann mein Werkzeug leicht angewandt werden. (Siehe den Abschnitt "Verwendungsweise" meiner [Bachelorarbeit](https://github.com/Mieneas/Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilaritaet/blob/main/thesis/thesis.pdf)).
+- `all_in_one` Dadurch kann mein Werkzeug leicht angewandt werden. (Siehe den Abschnitt "Verwendungsweise" meiner [Bachelorarbeit](https://github.com/Mieneas/Automatisierte-Reduktion-von-reaktiver-zu-starker-Bisimilaritaet/blob/main/thesis/document/thesis.pdf)).
