@@ -1,15 +1,14 @@
 act
-	a, b, f, g, c, time;
+	a, b, time;
 
 proc
-	_0 = a._1 + time._2;
-	_1 = b._3;
-	_2 = c._4 + g._6;
-	_3 = f._5 + c._4;
-	_4 = time._0;
-	_5 = delta;
-	_6 = delta;
+	p = a.p1 + time.p2;
+	p1 = delta;
+	p2 = b.p3;
+	p3 = delta;
+
+
 init 
 	hide(
-		{c}, _0
+		{b}, p
 	);
